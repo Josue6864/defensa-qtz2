@@ -1,13 +1,6 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Enum.java to edit this template
- */
 package com.mycompany.defensaqtz2.modelo;
 
-/**
- *
- * @author david_oavv7c4
- */
 public enum TipoInstrumento {
-    
+    CAMARA,
+    SENSOR
 }
