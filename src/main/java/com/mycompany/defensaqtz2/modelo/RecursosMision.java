@@ -6,6 +6,7 @@ public class RecursosMision {
     private long datosEnOrbita;
     private long totalDescargado;
 
+    //Aqui recibimos los datos long de cada variable para validar que no sean negativos
     public RecursosMision(long energiaDisponible, long datosEnOrbita,
                          long totalDescargado) {
         if (energiaDisponible < 0 || datosEnOrbita < 0 || totalDescargado < 0) {
@@ -24,7 +25,7 @@ public class RecursosMision {
 
     public void generarEnergia(long cantidad) {
         validarPositivo(cantidad, "La energia generada");
-        // Si la suma desborda, no se ejecuta la asignacion.
+        // addExact nos sirve para ver si el numero se desborda o no cabe
         energiaDisponible = Math.addExact(energiaDisponible, cantidad);
     }
 
@@ -36,7 +37,9 @@ public class RecursosMision {
             return false;
         }
 
-        // Calcular todo antes de modificar los saldos.
+        /* Calcular todo antes de modificar los saldos para ver que las cantidades
+        esten bien
+        */
         long nuevaEnergia = energiaDisponible - consumo;
         long nuevosDatos = Math.addExact(datosEnOrbita, datos);
 
