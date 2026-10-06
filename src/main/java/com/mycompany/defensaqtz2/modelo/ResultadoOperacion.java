@@ -12,9 +12,9 @@ public class ResultadoOperacion {
     private final long datosDescargados;
 
     public ResultadoOperacion(String idModulo, String nombreModulo,
-                              boolean opero, String motivo,
-                              long energiaGenerada, long energiaConsumida,
-                              long datosRecolectados, long datosDescargados) {
+            boolean opero, String motivo,
+            long energiaGenerada, long energiaConsumida,
+            long datosRecolectados, long datosDescargados) {
         if (idModulo == null || idModulo.trim().isEmpty()
                 || nombreModulo == null || nombreModulo.trim().isEmpty()) {
             throw new IllegalArgumentException(
@@ -24,7 +24,8 @@ public class ResultadoOperacion {
         boolean motivoExitoso = "OPERACION_REALIZADA".equals(motivo);
         boolean motivoImpedimento = "INACTIVO".equals(motivo)
                 || "ENERGIA_INSUFICIENTE".equals(motivo)
-                || "SIN_DATOS".equals(motivo);
+                || "SIN_DATOS".equals(motivo)
+                || "DESBORDAMIENTO".equals(motivo);
 
         if ((!motivoExitoso && !motivoImpedimento) || opero != motivoExitoso) {
             throw new IllegalArgumentException(

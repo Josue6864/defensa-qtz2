@@ -8,9 +8,9 @@ public class ModuloTierra extends Modulo {
     private long totalDescargado;
 
     public ModuloTierra(String id, String nombre, int salud,
-                        boolean activo, long costoConstruccion,
-                        String estacion, long capacidadDescarga,
-                        long energiaPorDescarga, long totalDescargado) {
+            boolean activo, long costoConstruccion,
+            String estacion, long capacidadDescarga,
+            long energiaPorDescarga, long totalDescargado) {
         super(id, nombre, salud, activo, costoConstruccion);
 
         if (estacion == null || estacion.trim().isEmpty()) {
@@ -57,7 +57,15 @@ public class ModuloTierra extends Modulo {
                 0, energiaPorDescarga, 0, descargados);
 
         // Aqui ocurre la descarga deverdad, le pide a recursosMision que reste la energia completa 
-        recursos.intentarDescargar(energiaPorDescarga, capacidadDescarga);
+        long descargadosReales = recursos.intentarDescargar(
+                energiaPorDescarga, capacidadDescarga);
+
+        //Validacion para ver que ambos valores coincidan
+        if (descargadosReales != descargados) {
+            throw new IllegalStateException(
+                    "La descarga real no coincide con la esperada.");
+        }
+
         //Se actualiza el historico de esa antena hasta ahorita por que ya se verifico que no tuviera errores con addExact.
         totalDescargado = nuevoTotal;
         return resultado;
