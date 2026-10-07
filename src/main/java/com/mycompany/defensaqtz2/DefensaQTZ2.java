@@ -1,4 +1,3 @@
-
 package com.mycompany.defensaqtz2;
 
 public class DefensaQTZ2 {
