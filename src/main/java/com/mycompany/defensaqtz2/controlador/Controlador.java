@@ -16,7 +16,7 @@ public class Controlador {
     public Controlador(Mision mision, VistaConsola vista) {
         if (mision == null || vista == null) {
             throw new IllegalArgumentException(
-                    "La misión y la vista son obligatorias.");
+                    "La mision y la vista son obligatorias.");
         }
 
         this.mision = mision;
@@ -53,23 +53,23 @@ public class Controlador {
 
                     case 0:
                         vista.mostrarMensaje(
-                                "Simulación finalizada. Hasta pronto.");
+                                "Simulacion finalizada. Hasta pronto.");
                         return;
 
                     default:
                         vista.mostrarMensaje(
-                                "Opción no válida. Intenta nuevamente.");
+                                "Opcion no valida. Intenta nuevamente.");
                 }
             }
         } catch (NoSuchElementException e) {
-            // Scanner puede lanzar esta excepción si se cierra la entrada.
+            // Scanner puede lanzar esta excepcion si se cierra la entrada.
             vista.mostrarMensaje(
-                    "Se cerró la entrada. Simulación finalizada.");
+                    "Se cerro la entrada. Simulacion finalizada.");
         }
     }
 
     private void listarModulos() {
-        vista.mostrarMensaje("Módulos en orden de participación:");
+        vista.mostrarMensaje("Modulos en orden de participacion:");
         vista.mostrarModulos(mision.listarModulos());
     }
 
@@ -77,37 +77,37 @@ public class Controlador {
         int criterio = vista.leerCriterioBusqueda();
 
         if (criterio == 1) {
-            String id = vista.leerTexto("Ingresa el ID del módulo:");
+            String id = vista.leerTexto("Ingresa el ID del modulo:");
             Optional<Modulo> encontrado = mision.buscarPorId(id);
 
             if (encontrado.isPresent()) {
                 vista.mostrarModulo(encontrado.get());
             } else {
                 vista.mostrarMensaje(
-                        "No se encontró un módulo con ese ID.");
+                        "No se encontro un modulo con ese ID.");
             }
 
         } else if (criterio == 2) {
             String nombre = vista.leerTexto(
-                    "Ingresa el nombre del módulo:");
+                    "Ingresa el nombre del modulo:");
 
             List<Modulo> encontrados = mision.buscarPorNombre(nombre);
 
             if (encontrados.isEmpty()) {
                 vista.mostrarMensaje(
-                        "No se encontraron módulos con ese nombre.");
+                        "No se encontraron modulos con ese nombre.");
             } else {
                 vista.mostrarModulos(encontrados);
             }
 
         } else {
-            vista.mostrarMensaje("Criterio de búsqueda no válido.");
+            vista.mostrarMensaje("Criterio de busqueda no valido.");
         }
     }
 
     private void mostrarCatalogo() {
         vista.mostrarMensaje(
-                "Catálogo por costo de construcción, de menor a mayor:");
+                "Catalogo por costo de construccion, de menor a mayor:");
 
         vista.mostrarModulos(mision.obtenerCatalogoPorCosto());
     }
@@ -120,8 +120,8 @@ public class Controlador {
 
         } catch (ArithmeticException e) {
             vista.mostrarMensaje(
-                    "Se alcanzó el límite del contador de ciclos. "
-                    + "No se inició un ciclo nuevo.");
+                    "Se alcanzo el limite del contador de ciclos. "
+                    + "No se inicio un ciclo nuevo.");
             return;
         }
 

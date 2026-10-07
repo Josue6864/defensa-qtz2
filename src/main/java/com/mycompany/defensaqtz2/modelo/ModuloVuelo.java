@@ -52,6 +52,9 @@ public class ModuloVuelo extends Modulo {
         long nuevosCiclos = Math.addExact(ciclosAcumulados, 1);
         Math.multiplyExact(datosPorCiclo, nuevosCiclos);
 
+        /* aca llamamos al metodo intentarRecolectar de la clase Recursos mision para recibir los parametros
+    y hacer las modificaciones en ciclos
+         */
         if (!recursos.intentarRecolectar(consumoEnergia, datosPorCiclo)) {
             return new ResultadoOperacion(getId(), getNombre(), false,
                     "ENERGIA_INSUFICIENTE", 0, 0, 0, 0);
@@ -61,10 +64,6 @@ public class ModuloVuelo extends Modulo {
                 getId(), getNombre(), true, "OPERACION_REALIZADA",
                 0, consumoEnergia, datosPorCiclo, 0);
 
-        /* aca llamamos al metodo intentarRecolectar de la clase Recursos mision para recibir los parametros
-        y hacer las modificaciones en ciclos
-         */
-        recursos.intentarRecolectar(consumoEnergia, datosPorCiclo);
         ciclosAcumulados = nuevosCiclos;
         return resultado;
     }

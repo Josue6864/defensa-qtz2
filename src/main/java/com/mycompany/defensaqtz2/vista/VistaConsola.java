@@ -18,18 +18,18 @@ public class VistaConsola {
 
     public int leerOpcionMenu() {
         System.out.println("\n===== DEFENSA DE QUETZAL-2 =====");
-        System.out.println("1. Listar módulos");
-        System.out.println("2. Buscar módulo");
-        System.out.println("3. Mostrar catálogo por costo");
+        System.out.println("1. Listar modulos");
+        System.out.println("2. Buscar modulo");
+        System.out.println("3. Mostrar catalogo por costo");
         System.out.println("4. Avanzar un ciclo");
         System.out.println("5. Mostrar resumen de comunicaciones");
         System.out.println("0. Salir");
 
-        return leerEnteroEnRango("Selecciona una opción:", 0, 5);
+        return leerEnteroEnRango("Selecciona una opcion:", 0, 5);
     }
 
     public int leerCriterioBusqueda() {
-        System.out.println("\nBuscar módulo:");
+        System.out.println("\nBuscar modulo:");
         System.out.println("1. Por ID");
         System.out.println("2. Por nombre");
 
@@ -46,7 +46,7 @@ public class VistaConsola {
             }
 
             mostrarMensaje(
-                    "La entrada no puede estar vacía. Intenta nuevamente.");
+                    "La entrada no puede estar vacia. Intenta nuevamente.");
         }
     }
 
@@ -62,11 +62,11 @@ public class VistaConsola {
                 }
 
                 mostrarMensaje(
-                        "Ingresa una opción entre " + minimo
+                        "Ingresa una opcion entre " + minimo
                         + " y " + maximo + ".");
 
             } catch (NumberFormatException e) {
-                mostrarMensaje("Ingresa un número entero válido.");
+                mostrarMensaje("Ingresa un numero entero valido.");
             }
         }
     }
@@ -77,7 +77,7 @@ public class VistaConsola {
 
     public void mostrarModulos(List<Modulo> modulos) {
         if (modulos.isEmpty()) {
-            mostrarMensaje("No hay módulos para mostrar.");
+            mostrarMensaje("No hay modulos para mostrar.");
             return;
         }
 
@@ -102,8 +102,8 @@ public class VistaConsola {
 
             if (resultado.isOpero()) {
                 System.out.println(
-                        "  Energía generada: " + resultado.getEnergiaGenerada()
-                        + " | Energía consumida: "
+                        "  Energia generada: " + resultado.getEnergiaGenerada()
+                        + " | Energia consumida: "
                         + resultado.getEnergiaConsumida());
 
                 System.out.println(
@@ -116,36 +116,36 @@ public class VistaConsola {
         System.out.println("\nEstado al finalizar el ciclo:");
 
         System.out.println(
-                "Energía disponible: " + recursos.getEnergiaDisponible());
+                "Energia disponible: " + recursos.getEnergiaDisponible());
 
         System.out.println(
-                "Datos pendientes en órbita: "
+                "Datos pendientes en orbita: "
                 + recursos.getDatosEnOrbita() + " MB");
 
         System.out.println(
-                "Total histórico descargado: "
+                "Total historico descargado: "
                 + recursos.getTotalDescargado() + " MB");
     }
 
     private String describirMotivo(String motivo) {
         switch (motivo) {
             case "OPERACION_REALIZADA":
-                return "Operación realizada.";
+                return "Operacion realizada.";
 
             case "INACTIVO":
-                return "No operó porque está inactivo.";
+                return "No opero porque esta inactivo.";
 
             case "ENERGIA_INSUFICIENTE":
-                return "No operó por energía insuficiente.";
+                return "No opero por energia insuficiente.";
 
             case "SIN_DATOS":
-                return "No operó porque no hay datos en órbita.";
+                return "No opero porque no hay datos en orbita.";
 
             case "DESBORDAMIENTO":
-                return "No operó porque se alcanzaría el límite numérico permitido.";
+                return "No opero porque se alcanzaria el limite numerico permitido.";
 
             default:
-                return "Resultado sin descripción disponible.";
+                return "Resultado sin descripcion disponible.";
         }
     }
 
@@ -159,27 +159,27 @@ public class VistaConsola {
                 "Antenas activas: " + resumen.getModulosTierraActivos());
 
         System.out.println(
-                "Capacidad activa máxima: "
+                "Capacidad activa maxima: "
                 + resumen.getCapacidadActivaTotal() + " MB por ciclo");
 
         System.out.println(
-                "Total histórico descargado: "
+                "Total historico descargado: "
                 + resumen.getTotalHistoricoDescargado() + " MB");
 
         if (resumen.getMayoresDescargas().isEmpty()) {
             mostrarMensaje(
-                    "No hay antenas para identificar una descarga máxima.");
+                    "No hay antenas para identificar una descarga maxima.");
             return;
         }
 
-        System.out.println("Antenas con mayor descarga histórica:");
+        System.out.println("Antenas con mayor descarga historica:");
 
         for (ModuloTierra antena : resumen.getMayoresDescargas()) {
             System.out.println(
                     "ID: " + antena.getId()
                     + " | Nombre: " + antena.getNombre()
-                    + " | Estación: " + antena.getEstacion()
-                    + " | Histórico descargado: "
+                    + " | Estacion: " + antena.getEstacion()
+                    + " | Historico descargado: "
                     + antena.getTotalDescargado() + " MB");
         }
     }
